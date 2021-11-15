@@ -1,0 +1,21 @@
+name: Push Docker image
+description: Pushes the Docker image from the current commit to the GitHub Container registry
+
+inputs:
+  gh-container-push-token:
+    description: Token to push to the private GitHub Container registry
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Login to Github Container registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: interdiscount-coop
+        password: ${{ inputs.gh-container-push-token }}
+
+    - name: Push Docker image
+      shell: bash
+      run: docker push --all-tags ghcr.io/interdiscount/microspot-frontend
