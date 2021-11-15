@@ -2,6 +2,10 @@ name: Push Docker image
 description: Pushes the Docker image from the current commit to the GitHub Container registry
 
 inputs:
+  image-name:
+    description: Name of the image
+    required: true
+
   gh-container-push-token:
     description: Token to push to the private GitHub Container registry
     required: true
@@ -18,4 +22,4 @@ runs:
 
     - name: Push Docker image
       shell: bash
-      run: docker push --all-tags ghcr.io/interdiscount/microspot-frontend
+      run: docker push --all-tags ghcr.io/interdiscount/${{ inputs.image-name }}
