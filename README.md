@@ -14,7 +14,7 @@ Pushes a Docker image.
 ## Example usage
 
 ```
-uses: interdiscount/github-actions-push-docker-image@main
+uses: interdiscount/github-actions-push-docker-image@v1
 with:
     image-name: microspot-frontend
     gh-container-push-token: ${{ secrets.GH_CONTAINER_PUSH_TOKEN }}
